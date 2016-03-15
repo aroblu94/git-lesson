@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Git e GitHub</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<script type="text/javascript" src='js/jquery.min.js'></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<style>
+		.body {
+			font-size: 110%;
+			text-align: justify;
+		}
+		.dim * {
+			font-size: 50%;
+			margin-top: -2px;
+		}
+		.navbar-brand {
+			line-height: 130px;
+			height: 130px;
+			padding-top: 0;
+			margin: 0 auto;
+			display: block;
+		}
+		.mynavbar {
+			background-color: #035eab;
+			outline-color: #035eab;
+		}
+		.container {
+			padding-right: 100px;
+			padding-left: 100px;
+		}
+		h1 {
+			margin-top: 3rem;
+			border-bottom: solid 1px #e7e7e7;
+		}
+		a {
+			color: #1e6bb8;
+		}
+		.sublined:after {
+			content: "";
+			display: block;
+			position: relative;
+			z-index: 10;
+			width: 15%;
+			height: 1px;
+			margin: 10px 0 0;
+			background: #6685a4;
+		}
+		.footer {
+			/*position: absolute;*/
+			bottom: 0;
+			width: 100%;
+			height: 60px;
+			background-color: #f5f5f5;
+		}
+		.center {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-default">
+			<div class="navbar header">
+				<div class="container">
+					<a class="navbar-brand" href="#"><img src="img/logo.png" alt="Git + GitHub" height="140" /></a>
+				</div>
+			</div>
+		</nav>
+		<div class="container body">
+			
+			<h1 class="sublined">Git <a href="https://git-scm.com" target="_blank" class="dim"><i class="fa fa-external-link-square"></i></a></h1>
+			<h2>Cos'è</h2>
+			<p>Git è un <strong>sistema di controllo versione</strong> (<a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">VCS</a>) e serve quindi a registrare i cambiamenti che vengono effettuati su un file o su una serie di file nel tempo, così da poter richiamare una versione specifica di quei dati in qualsiasi momento e tenerne sotto controllo ogni modifica.</p>
+			<p>Software come Git possono essere utilizzati in <strong>locale</strong> per tracciare i progressi di un progetto personale, così come <strong>online</strong> per gestire un progetto di gruppo.</p>
+			<p>Grazie a un VCS si può:
+				<ul>
+					<li>ripristinare i file ad uno stato precedente</li>
+					<li>ripristinare l’intero progetto allo stato precedente</li>
+					<li>confrontare i cambiamenti all’interno dei file</li>
+					<li>nel caso di lavoro in team, vedere chi ha realizzato determinate modifiche, quando e perché</li>
+					<li>...</li>
+				</ul>
+			</p>
+			<p>Git è un VCS <strong>distribuito</strong>. Tutti gli utenti che lavorano al progetto hanno infatti una copia completa del <code>repository</code> (l’insieme di tutte le versioni dei vari file). In questo modo è come se esistesse una copia di backup per ogni persona che lavora al progetto, senza che i membri del team abbiano bisogno di connettersi al server per visualizzare la storia di un progetto.</p>
+			<img src="img/branch_graph.png"/>
+
+			<h2>Come lavora</h2>
+			<h3>Repository</h3>
+			<p>È il nome dato ad ogni progetto Git. Per creare una repository si può partire da un progetto non su Git oppure clonare una <code>repository</code> già esistente.</p>
+
+			<h3>Branch</h3>
+			<p>Un progetto controllato da Git può avere diverse diramazioni, o <code>branch</code>, vale a dire dei flussi di sviluppo differenti per ogni progetto. Questo permette di lavorare allo sviluppo (di una nuova feature, della correzione di un bug, ...) senza correre il rischio di pasticciare il ramo principale del progetto.<br>
+			Una volta raggiunto l'obiettivo del dato branch, si può aggiornare il ramo principale (<code>master</code>) effettuando un <code>merge</code> tra i due rami.</p>
+
+			<h3>Gestione dei file</h3>
+			<p>I file controllati da Git (<code>tracked</code>) possono assumere tre stati diversi:
+				<ul>
+					<li><code>unmodified</code> - il file non è stato modificato</li>
+					<li><code>modified</code> - il file è stato modificato ma non è stato contrassegnato in modo da essere aggiunto al database</li>
+					<li><code>staged</code> - il file modificato è stato contrassegnato in modo da essere inserito nel database</li>
+				</ul>
+			<img src="img/file.png"/>
+			</p>
+
+			<h3>Commit</h3>
+			<p>Un <strong>commit</strong> è il <i>"componente base"</i> di Git e registra uno stato dello sviluppo di un progetto, riportando diverse informazioni sulle ultime modifiche rispetto al commit precedente:
+				<ul>
+					<li>a quale ramo - branch - abbiamo affidato il commit</li>
+					<li>checksum (versione) del commit</li>
+					<li>autore del commit</li>
+					<li>timestamp del commit</li>
+					<li>descrizione e commenti al commit inseriti dall'autore</li>
+					<li>quanti e quali file sono stati modificati</li>
+					<li>statistiche sulle linee aggiunte, eliminate o modificate nel commit</li>
+				</ul>
+			</p>
+
+			<h2>Qualche comando</h2>
+			<p>
+				<code>git init</code> - inizializza una repository Git<br>
+				<code>git clone [url] [destinazione]</code> - clona una repository Git<br>
+				<code>git status</code> - mostra lo status della repository<br>
+				<code>git add [file]</code> - traccia un file<br>
+				<code>git rm [file]</code> - rimuove un file da quelli tracciati<br>
+				<code>git commit [-m "commento"]</code> - crea un commit con le modifiche effettuate e tracciate<br>
+				<code>git pull [repository] [branch]</code> - sincronizza la repository locale con la versione su server<br>
+				<code>git push [repository] [branch]</code> - aggiorna la versione della repository sul server con le modifiche locali <i>committate</i><br>
+			</p>
+			<br>
+			<div class="alert alert-info">
+				Pro Git - Scott Chacon, 1^ edizione (2009) in italiano, <a href="https://git-scm.com/book/it/v1" target="_blank">qui</a>
+			</div>
+
+			<h1 class="sublined">GitHub <a href="https://github.com" target="_blank" class="dim"><i class="fa fa-external-link-square"></i></a></h1>
+			<p>GutHub è una piattaforma di <code>web hosting</code> nata per ospitare progetti Git. Permette di gestire le proprie repository online in modo semplice e di condividere i progetti con altri sviluppatori.<br>
+			Chiunque può visualizzare il codice dei repository pubblici e mettersi in contatto con lo sviluppatore del progetto stesso, può effettuarne un <code>fork</code>, vale a dire importarne una copia sul suo account, clonarlo e contribuirvi.<br>
+			GitHub offre per ogni repository un sistema di <code>bug tracking</code> che permette di tenere traccia di eventuali <code>bug</code> e possibili <code>enhancement</code> ad ognuno dei quali è possibile aggiungere commenti o discussioni tra sviluppatori.<br>
+			Questo permette ad ogni sviluppatore, anche se non fa parte del team di sviluppo del progetto in questione, di aiutare il team nello sviluppo del progetto, attraverso i meccanismi di fork, clone, merge e <code>pull request</code>.</p>
+
+		</div>
+		<footer class="footer">
+			<div class="container center">
+				<br>
+				<p class="text-muted">Made with <3</p>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
